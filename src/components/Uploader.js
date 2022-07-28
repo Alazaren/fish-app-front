@@ -1,13 +1,25 @@
 import React from "react";
+import Loader from "./Loader"
 
-function Uploader ({onFileSelected}) {
+function Uploader ({onFileSelected, imageRender, loadingStatus, fileUploadProgress}) {
 
     return (
-        <div className="selection">
+       
+        <div className="uploader">
             <form>
-                <label for="file">Виберіть зображення риби:</label> <br />
+                <label className="file-label" for="file">
+                <i class="cloud upload icon"></i> Фото одної риби
+                </label> <br />
                 <input onChange={onFileSelected} name="file" className="file" id="file" type="file"></input>
             </form>
+            <div>
+                <Loader loadingStatus={loadingStatus} fileUploadProgress={fileUploadProgress} />
+            </div>
+           {imageRender &&
+                <div className="image-preview">
+                    <img src={imageRender} alt="preview"  />
+                </div>
+            }
         </div>
     )
 }

@@ -1,16 +1,18 @@
 import React from "react";
 
 
-function Loader ({loadingStatus}) {
-    const status = (loadingStatus === 1) ? 'Визначаємо...' : ''
-    
-    
+function Loader ({loadingStatus, fileUploadProgress}) {
 
     return (
         
        <div className="loader">
-            <div className="container">{status}</div>
-            <div className="container">Визначення може зайняти до 30 секунд.</div>
+            {fileUploadProgress && fileUploadProgress !== 100 &&
+                <div>Завантажуємо файл {fileUploadProgress}%</div>
+            }
+            {loadingStatus === 1 &&
+                <div className="container">Визначаємо <i class="spinner loading icon"></i></div>
+            }     
+            
         </div>
     )
     

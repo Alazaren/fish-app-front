@@ -36,8 +36,8 @@ function Result({clasificationResult}) {
 
         return (
             <div className="result">
-                <div className="resultfish">На фото {mapping[clasificationResult.category]} зі вірогідністю {prob}%.</div>
-                <div>Детальне передбачення</div>
+                <div className="resultfish">На фото {mapping[clasificationResult.category]} з вірогідністю {prob}%.</div>
+                <div>Детальне передбачення:</div>
                 <div>{renderedList}</div>
             </div>     
             
