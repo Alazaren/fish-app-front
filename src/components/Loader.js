@@ -6,7 +6,7 @@ function Loader ({loadingStatus, fileUploadProgress}) {
     return (
         
        <div className="loader">
-            {fileUploadProgress && fileUploadProgress !== 100 &&
+            {fileUploadProgress !== 0 && fileUploadProgress !== 100 &&
                 <div>Завантажуємо файл {fileUploadProgress}%</div>
             }
             {loadingStatus === 1 &&
