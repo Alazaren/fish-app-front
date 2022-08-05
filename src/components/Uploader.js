@@ -1,7 +1,7 @@
 import React from "react";
 import Loader from "./Loader"
 
-function Uploader ({onFileSelected, imageRender, loadingStatus, fileUploadProgress}) {
+function Uploader ({onFileSelected, imageRender, loadingStatus, fileUploadProgress, showImageRender}) {
 
     return (
        
@@ -15,9 +15,9 @@ function Uploader ({onFileSelected, imageRender, loadingStatus, fileUploadProgre
             <div>
                 <Loader loadingStatus={loadingStatus} fileUploadProgress={fileUploadProgress} />
             </div>
-           {imageRender &&
+           {imageRender && showImageRender &&
                 <div className="image-preview">
-                    <img src={imageRender} alt="preview"  />
+                    <img id="image-result" src={imageRender} alt="preview"  />
                 </div>
             }
         </div>

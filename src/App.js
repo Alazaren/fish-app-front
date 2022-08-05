@@ -11,12 +11,14 @@ function App() {
   const [loadingStatus, setLoadingStatus] = useState(0);
   const [imageRender, setImageRender] = useState(null);
   const [fileUploadProgress, setFileUploadProgress] = useState(0);
+  const [showImageRender, setShowImageRender] = useState(true); 
 
   const [result, clasify] = useClassifier(setLoadingStatus, setFileUploadProgress);
 
   const onFileChange = (event) => {
      const file = event.target.files[0];
      setImageRender(URL.createObjectURL(event.target.files[0]));
+     setShowImageRender(true)
      setLoadingStatus(1)
      setClassificationResult(null)
      clasify(file);
@@ -24,6 +26,7 @@ function App() {
   
   useEffect(() => {
     setClassificationResult(result);
+    setShowImageRender(false)
   }, [result]);
   
   return (
@@ -45,17 +48,16 @@ function App() {
       </div>
       <div className="uploader">
           <div className="container">
-          <Uploader onFileSelected={onFileChange} imageRender={imageRender} loadingStatus={loadingStatus} fileUploadProgress={fileUploadProgress}/>
+          <Uploader onFileSelected={onFileChange} imageRender={imageRender} showImageRender={showImageRender} loadingStatus={loadingStatus} fileUploadProgress={fileUploadProgress}/>
           </div>
       </div>
     
 
       <div className="result">
         <div className="container">
-            <Result  clasificationResult={clasificationResult}/>
+            <Result  clasificationResult={clasificationResult} imageRender={imageRender}/>
         </div>
       </div>
-          
     </div>
 
   );

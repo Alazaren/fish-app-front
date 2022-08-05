@@ -20,10 +20,10 @@ button:focus {
 .container {
   margin: auto;
   max-width: 600px;
-  overflow: auto;
+  /* overflow: auto; */
   padding: 0 20px;
   padding-top: 20px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 
@@ -98,7 +98,7 @@ button:focus {
   text-align: center;
   font-size: 1.5rem;
   color: #515866;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 input[type="file"] {
@@ -121,9 +121,19 @@ input[type="file"] {
 
 
 .image-preview img {
-  padding-top: 10px;
-  width: 200px;
+  height: auto;
+  width:100%;
   margin: auto;
+}
+
+.image-result img {
+  height: auto;
+  width:100%;
+  margin: auto;
+}
+
+.image-result {
+  position: relative;
 }
 
 .result {
@@ -136,8 +146,34 @@ input[type="file"] {
 
 .loader {
   color: #8ec39f;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
+
+.target-border {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px;
+  border: 2px solid #8ec39f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  color:green;
+}
+
+.target-border p {
+  opacity: 0.7;
+  background-color: azure;
+  padding: 3px 3px;
+  border-radius: 3px;
+}
+
+
+/* .target-border p {
+  margin-left: auto;
+  margin-right: auto;
+} */
 
 /* p {
   font-size: 0.8rem;

@@ -3,7 +3,7 @@ import axios from "axios";
 
 const useVideos = (setLoadingStatus, setFileUploadProgress) => {
 
-    const [result, setResult] = useState(null);
+    const [detectorResults, setDetectorResult] = useState(null);
 
 
     const onUploadProgress = function(progressEvent) {
@@ -11,22 +11,22 @@ const useVideos = (setLoadingStatus, setFileUploadProgress) => {
         console.log(progress)
         setFileUploadProgress(progress);
     }
-    // http://127.0.0.1:5000    https://fishclassifier-h3t0.onrender.com/
+
     const classify = async (file) => {
         var data = new FormData();
         data.append("image", file);
         const response = await axios({
             method: "post",
-            url:"http://127.0.0.1:5000/predict",
+            url:"https://fishclassifier-h3t0.onrender.com/predict",
             data: data,
             onUploadProgress: onUploadProgress,
             headers: { "Content-Type": "multipart/form-data" },
         });
-        setResult(response.data);
+        setDetectorResult(response.data);
         setLoadingStatus(0);
     };
 
-    return [result, classify];
+    return [detectorResults, classify];
 }
 
 export default useVideos;
