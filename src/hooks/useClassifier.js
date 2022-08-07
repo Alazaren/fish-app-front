@@ -11,13 +11,13 @@ const useVideos = (setLoadingStatus, setFileUploadProgress) => {
         console.log(progress)
         setFileUploadProgress(progress);
     }
-    // http://127.0.0.1:5000    
+    //   
     const classify = async (file) => {
         var data = new FormData();
         data.append("image", file);
         const response = await axios({
             method: "post",
-            url:"https://fishclassifier-h3t0.onrender.com/predict",
+            url:"https://fish-classifier-jncz.onrender.com/predict",
             data: data,
             onUploadProgress: onUploadProgress,
             headers: { "Content-Type": "multipart/form-data" },
